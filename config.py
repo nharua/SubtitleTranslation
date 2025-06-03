@@ -7,9 +7,9 @@ TEMPERATURE = 0.2
 MAX_TOKENS = 8192  # Maximum tokens for the response
 
 # Chunk size for splitting the transcript
-BLOCK_SIZE = 20
+BLOCK_SIZE = 50
 # Chunk overlap size
-CHUNK_OVERLAP = 2
+CHUNK_OVERLAP = 8
 
 # Load environment variables from .env file
 load_dotenv()
