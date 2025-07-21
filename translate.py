@@ -12,6 +12,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 def translate_subtitle(
     subtitle: str,
     api_key,
@@ -21,7 +22,7 @@ def translate_subtitle(
     max_tokens: int = config.MAX_TOKENS,
     block_size: int = config.BLOCK_SIZE,
     block_overlap: int = config.CHUNK_OVERLAP,
-    custom_prompt: str = None,
+    custom_prompt: str | None = None,
 ) -> str:
     """
     Translate a subtitle using OpenAI API.
@@ -52,7 +53,9 @@ def translate_subtitle(
             "Nếu xuất hiện 'you', hãy đoán đúng vai trò trong hội thoại (ví dụ: anh, em, con, mẹ...).\n"
             "Giữ nguyên định dạng số dòng như đầu vào (ví dụ: [5] Câu thoại).\n\n"
         )
-        prompt = (custom_prompt.strip() + "\n\n" if custom_prompt else default_prompt) + formatted_input
+        prompt = (
+            custom_prompt.strip() + "\n\n" if custom_prompt else default_prompt
+        ) + formatted_input
 
         translated_text = ""
         try:
